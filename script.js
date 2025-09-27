@@ -19,15 +19,15 @@ let rightchar = 0;
 
 difficulty.addEventListener("change", function textassign() {
   if (difficulty.value == "Short") {
-    content = typingTexts[0].short[Math.floor(Math.random() * 6)];
+    content = typingTexts[0].short[Math.floor(Math.random() * 5)];
     console.log(content);
     text_content = content.text;
   } else if (difficulty.value == "Medium") {
-    content = typingTexts[1].medium[Math.floor(Math.random() * 6)];
+    content = typingTexts[1].medium[Math.floor(Math.random() * 5)];
     console.log(content);
     text_content = content.text;
   } else {
-    content = typingTexts[2].long[Math.floor(Math.random() * 6)];
+    content = typingTexts[2].long[Math.floor(Math.random() * 5)];
     console.log(content);
     text_content = content.text;
   }
@@ -41,10 +41,8 @@ function rendertext() {
     let span = document.createElement("span");
     span.style.position = "relative";
     span.style.paddingLeft = "2px";
-    if(text_content[i]==" ")
-      span.innerHTML="&nbsp;"
-    else
-    span.innerText = `${text_content[i]}`;
+    if (text_content[i] == " ") span.innerHTML = "&nbsp;";
+    else span.innerText = `${text_content[i]}`;
     text.append(span);
   }
 }
@@ -87,7 +85,9 @@ function result() {
     Number(time.innerText.substring(0, 2)) +
     Number(time.innerText.substring(3, 5)) / 60;
   console.log(totaltime);
-  let wpmstatus = Math.round(size/ (5 * totaltime)) - Math.round(((size-rightchar)/totaltime));
+  let wpmstatus =
+    Math.round(size / (5 * totaltime)) -
+    Math.round((size - rightchar) / totaltime);
   let accuracystatus =
     count != 0 ? ((rightchar / size) * 100).toPrecision(4) : 0;
   console.log("the wpm is ", wpmstatus);
